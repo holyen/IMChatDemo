@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "CWEmotionSelectorView.h"
 #import "CWMoreSelectorView.h"
+#import "CWRecordUtility.h"
+
 //#import "CXAHyperlinkLabel.h"
 //#import "NSString+CXAHyperlinkParser.h"
 
@@ -21,7 +23,10 @@
 - (void)addOthersButtonDidTapInChatToolView:(CWChatToolView *)aChatToolView;
 @end
 
-@interface CWChatToolView : UIView <CWEmotionSelectorViewDelegate, UITextFieldDelegate>
+@interface CWChatToolView : UIView <CWEmotionSelectorViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate>
+{
+    CWRecordUtility *_recordUtility;
+}
 
 @property (assign, nonatomic) id<CWChatToolViewDelegate> delegate;
 @property (retain, nonatomic) IBOutlet UIButton *pressSpeakButton;

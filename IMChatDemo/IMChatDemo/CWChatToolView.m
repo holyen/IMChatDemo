@@ -23,6 +23,11 @@
 {
     [super layoutSubviews];
     _messageSendTextField.delegate = self;
+    _recordUtility = [[CWRecordUtility alloc] init];
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(recordButtonPress:)];
+    longPress.delegate = self;
+    [_pressSpeakButton addGestureRecognizer:longPress];
     //!!! FOR TEST
     /**
     CXAHyperlinkLabel *label = [[CXAHyperlinkLabel alloc] initWithFrame:CGRectMake(100, 60, 200, 200)];
@@ -41,6 +46,20 @@
     };
     [self addSubview:label];
      */
+}
+
+- (void)recordButtonPress:(UILongPressGestureRecognizer *)longPress
+{
+    if (longPress.state == UIGestureRecognizerStateBegan) {
+        //录音开始.
+        NSLog(@"开始录音");
+        [_recordUtility beginRecordByFileName:[CWRecordUtility currentTimeString]];
+    } else if (longPress.state == UIGestureRecognizerStateEnded) {
+        //结束.
+        [_recordUtility stopRecord];
+        NSString *wavInfoStr = [NSString stringWithFormat:@"文件大小:%d", [_recordUtility sizeOfFileFromPath:_recordUtility.path] / 1024];
+        NSLog(@"音频 %@",wavInfoStr);
+    }
 }
 
 //!!! FOR TEST
@@ -84,6 +103,7 @@
 
 - (void)dealloc
 {
+    [_recordUtility release];
     [_pressSpeakButton release];
     [_messageSendTextField release];
     [_textModeButton release];
