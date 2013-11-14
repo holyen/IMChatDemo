@@ -172,8 +172,6 @@
     if ([_delegate respondsToSelector:@selector(moreSelectorViewTapInChatToolView:type:)]) {
         [_delegate performSelector:@selector(moreSelectorViewTapInChatToolView:type:) withObject:self withObject:aType];
     }
-
-
 }
 
 - (void)updateSelectorViewToEmotionUI

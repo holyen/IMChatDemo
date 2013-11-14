@@ -17,6 +17,17 @@
 		9E9A964818289AB000E587D5 /* CWEmotionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9A964718289AB000E587D5 /* CWEmotionButton.m */; };
 		9E9A964B1828CCFE00E587D5 /* CWEmotionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9A964A1828CCFE00E587D5 /* CWEmotionSelectorView.m */; };
 		9EA037D8182A0B6500C6F8DF /* CWMoreSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA037D7182A0B6500C6F8DF /* CWMoreSelectorView.m */; };
+		9EB878BB1830A84100EF58BC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB878BA1830A84100EF58BC /* libsqlite3.dylib */; };
+		9EB878C41830A99000EF58BC /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB878BF1830A99000EF58BC /* FMDatabase.m */; };
+		9EB878C51830A99000EF58BC /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB878C11830A99000EF58BC /* FMDatabaseAdditions.m */; };
+		9EB878C61830A99000EF58BC /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB878C31830A99000EF58BC /* FMResultSet.m */; };
+		9EB878C91830AF2200EF58BC /* CWSQLUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB878C81830AF2200EF58BC /* CWSQLUtility.m */; };
+		9EB878CC1830AFBD00EF58BC /* CWUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB878CB1830AFBD00EF58BC /* CWUserInfo.m */; };
+		9EB878CF1830AFCC00EF58BC /* CWMessageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB878CE1830AFCC00EF58BC /* CWMessageInfo.m */; };
+		9ECCCBCD18331DFE0002179A /* CWChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECCCBCC18331DFE0002179A /* CWChatCell.m */; };
+		9ECCCBD01833609B0002179A /* CWBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECCCBCF1833609B0002179A /* CWBaseModel.m */; };
+		9ECCCBD3183360BA0002179A /* CWMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECCCBD2183360BA0002179A /* CWMessageModel.m */; };
+		9ECCCBD61833695A0002179A /* NSDate+Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECCCBD51833695A0002179A /* NSDate+Help.m */; };
 		9ED423CA182B5EEB000087A1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED423C9182B5EEB000087A1 /* CoreText.framework */; };
 		9ED423CC182B5F1B000087A1 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ED423CB182B5F1B000087A1 /* libxml2.2.dylib */; };
 		9ED423DC182C7E57000087A1 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9ED423CF182C7E57000087A1 /* amrFileCodec.mm */; };
@@ -68,6 +79,27 @@
 		9E9A964A1828CCFE00E587D5 /* CWEmotionSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWEmotionSelectorView.m; sourceTree = "<group>"; };
 		9EA037D6182A0B6500C6F8DF /* CWMoreSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWMoreSelectorView.h; sourceTree = "<group>"; };
 		9EA037D7182A0B6500C6F8DF /* CWMoreSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMoreSelectorView.m; sourceTree = "<group>"; };
+		9EB878BA1830A84100EF58BC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		9EB878BE1830A99000EF58BC /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		9EB878BF1830A99000EF58BC /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		9EB878C01830A99000EF58BC /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		9EB878C11830A99000EF58BC /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		9EB878C21830A99000EF58BC /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		9EB878C31830A99000EF58BC /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		9EB878C71830AF2200EF58BC /* CWSQLUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWSQLUtility.h; sourceTree = "<group>"; };
+		9EB878C81830AF2200EF58BC /* CWSQLUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWSQLUtility.m; sourceTree = "<group>"; };
+		9EB878CA1830AFBD00EF58BC /* CWUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWUserInfo.h; sourceTree = "<group>"; };
+		9EB878CB1830AFBD00EF58BC /* CWUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWUserInfo.m; sourceTree = "<group>"; };
+		9EB878CD1830AFCC00EF58BC /* CWMessageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWMessageInfo.h; sourceTree = "<group>"; };
+		9EB878CE1830AFCC00EF58BC /* CWMessageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMessageInfo.m; sourceTree = "<group>"; };
+		9ECCCBCB18331DFE0002179A /* CWChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWChatCell.h; sourceTree = "<group>"; };
+		9ECCCBCC18331DFE0002179A /* CWChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWChatCell.m; sourceTree = "<group>"; };
+		9ECCCBCE1833609B0002179A /* CWBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWBaseModel.h; sourceTree = "<group>"; };
+		9ECCCBCF1833609B0002179A /* CWBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWBaseModel.m; sourceTree = "<group>"; };
+		9ECCCBD1183360BA0002179A /* CWMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWMessageModel.h; sourceTree = "<group>"; };
+		9ECCCBD2183360BA0002179A /* CWMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMessageModel.m; sourceTree = "<group>"; };
+		9ECCCBD41833695A0002179A /* NSDate+Help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Help.h"; sourceTree = "<group>"; };
+		9ECCCBD51833695A0002179A /* NSDate+Help.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Help.m"; sourceTree = "<group>"; };
 		9ED423C9182B5EEB000087A1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		9ED423CB182B5F1B000087A1 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		9ED423CE182C7E57000087A1 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
@@ -107,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EB878BB1830A84100EF58BC /* libsqlite3.dylib in Frameworks */,
 				9ED423E8182C8B94000087A1 /* AVFoundation.framework in Frameworks */,
 				9ED423E6182C8B8B000087A1 /* AudioToolbox.framework in Frameworks */,
 				9ED423E4182C8B81000087A1 /* CoreAudio.framework in Frameworks */,
@@ -133,6 +166,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9EB878BD1830A99000EF58BC /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				9EB878BE1830A99000EF58BC /* FMDatabase.h */,
+				9EB878BF1830A99000EF58BC /* FMDatabase.m */,
+				9EB878C01830A99000EF58BC /* FMDatabaseAdditions.h */,
+				9EB878C11830A99000EF58BC /* FMDatabaseAdditions.m */,
+				9EB878C21830A99000EF58BC /* FMResultSet.h */,
+				9EB878C31830A99000EF58BC /* FMResultSet.m */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
 		9ED423CD182C7E57000087A1 /* amrwapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +249,7 @@
 		9EDFF67F1820F1620014F421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9EB878BA1830A84100EF58BC /* libsqlite3.dylib */,
 				9ED423E7182C8B94000087A1 /* AVFoundation.framework */,
 				9ED423E5182C8B8B000087A1 /* AudioToolbox.framework */,
 				9ED423E3182C8B81000087A1 /* CoreAudio.framework */,
@@ -219,6 +266,7 @@
 		9EDFF6861820F1620014F421 /* IMChatDemo */ = {
 			isa = PBXGroup;
 			children = (
+				9EB878BD1830A99000EF58BC /* FMDB */,
 				9ED423CD182C7E57000087A1 /* amrwapper */,
 				9ED423D2182C7E57000087A1 /* opencore */,
 				9EA037D6182A0B6500C6F8DF /* CWMoreSelectorView.h */,
@@ -243,6 +291,20 @@
 				9E9A964A1828CCFE00E587D5 /* CWEmotionSelectorView.m */,
 				9ED423E0182C80F2000087A1 /* CWRecordUtility.h */,
 				9ED423E1182C80F2000087A1 /* CWRecordUtility.m */,
+				9EB878C71830AF2200EF58BC /* CWSQLUtility.h */,
+				9EB878C81830AF2200EF58BC /* CWSQLUtility.m */,
+				9EB878CA1830AFBD00EF58BC /* CWUserInfo.h */,
+				9EB878CB1830AFBD00EF58BC /* CWUserInfo.m */,
+				9EB878CD1830AFCC00EF58BC /* CWMessageInfo.h */,
+				9EB878CE1830AFCC00EF58BC /* CWMessageInfo.m */,
+				9ECCCBCB18331DFE0002179A /* CWChatCell.h */,
+				9ECCCBCC18331DFE0002179A /* CWChatCell.m */,
+				9ECCCBCE1833609B0002179A /* CWBaseModel.h */,
+				9ECCCBCF1833609B0002179A /* CWBaseModel.m */,
+				9ECCCBD1183360BA0002179A /* CWMessageModel.h */,
+				9ECCCBD2183360BA0002179A /* CWMessageModel.m */,
+				9ECCCBD41833695A0002179A /* NSDate+Help.h */,
+				9ECCCBD51833695A0002179A /* NSDate+Help.m */,
 			);
 			path = IMChatDemo;
 			sourceTree = "<group>";
@@ -376,14 +438,24 @@
 			files = (
 				9EDFF6911820F1620014F421 /* CWAppDelegate.m in Sources */,
 				9E777EEC18279FA100A7CB66 /* CWUtility.m in Sources */,
+				9EB878C41830A99000EF58BC /* FMDatabase.m in Sources */,
 				9E9A964818289AB000E587D5 /* CWEmotionButton.m in Sources */,
 				9ED423DC182C7E57000087A1 /* amrFileCodec.mm in Sources */,
+				9EB878C51830A99000EF58BC /* FMDatabaseAdditions.m in Sources */,
+				9ECCCBD01833609B0002179A /* CWBaseModel.m in Sources */,
 				9E9A964B1828CCFE00E587D5 /* CWEmotionSelectorView.m in Sources */,
+				9EB878C91830AF2200EF58BC /* CWSQLUtility.m in Sources */,
+				9EB878CC1830AFBD00EF58BC /* CWUserInfo.m in Sources */,
+				9EB878CF1830AFCC00EF58BC /* CWMessageInfo.m in Sources */,
+				9ECCCBD61833695A0002179A /* NSDate+Help.m in Sources */,
 				9E777ED018273A1E00A7CB66 /* CWMainViewController.m in Sources */,
 				9E777ED418276C9400A7CB66 /* CWChatToolView.m in Sources */,
+				9EB878C61830A99000EF58BC /* FMResultSet.m in Sources */,
 				9ED423E2182C80F2000087A1 /* CWRecordUtility.m in Sources */,
 				9EDFF68D1820F1620014F421 /* main.m in Sources */,
 				9ED423DD182C7E57000087A1 /* wav.mm in Sources */,
+				9ECCCBD3183360BA0002179A /* CWMessageModel.m in Sources */,
+				9ECCCBCD18331DFE0002179A /* CWChatCell.m in Sources */,
 				9EA037D8182A0B6500C6F8DF /* CWMoreSelectorView.m in Sources */,
 				9E777EEF1827A34600A7CB66 /* CWEmotionListScrollView.m in Sources */,
 			);

@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "CWChatToolView.h"
+#import "CWMessageModel.h"
 
 //!!!FIX ME
 # define PresentViewController(vc1, vc2, animate, complete) [vc1 presentViewController:vc2 animated:animate completion:complete]
 # define DismissViewController(vc, animate, complete) [vc dismissViewControllerAnimated:animate completion:complete]
 
-@interface CWMainViewController : UIViewController <CWChatToolViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface CWMainViewController : UIViewController <CWChatToolViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+{
+    CWMessageModel *_messageModel;
+}
 
 @property (retain, nonatomic) CWChatToolView *chatToolView;
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -15,4 +15,9 @@
 //    [[NSFileManager defaultManager] ];
 //}
 
+
++ (NSString *)documentPath:(NSString *)subPath;
+
++ (UIImage *)stretchableImage:(UIImage *)img edgeInsets:(UIEdgeInsets)edgeInsets;
+
 @end

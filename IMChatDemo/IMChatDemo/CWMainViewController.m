@@ -7,6 +7,10 @@
 //
 
 #import "CWMainViewController.h"
+#import "CWChatCell.h"
+//!!! TEST
+#import "CWSQLUtility.h"
+#import "CWMessageInfo.h"
 
 @interface CWMainViewController ()
 
@@ -18,6 +22,12 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        _messageModel = [[CWMessageModel alloc] init];
+        [_messageModel addObserver:self
+                        forKeyPath:KVO_MESSAGES_PATH
+                           options:NSKeyValueObservingOptionNew
+                           context:nil];
+        [_messageModel messagesFromUserInfoId:1000 toUserInfoId:1001 pageIndex:0];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(keyboardWillShow:)
                                                      name:UIKeyboardWillShowNotification
@@ -29,8 +39,23 @@
         _chatToolView = [[[NSBundle mainBundle] loadNibNamed:@"CWChatToolView" owner:self options:nil] objectAtIndex:0];
         _chatToolView.frame = CGRectMake(0, self.view.bounds.size.height - 44, 320, 260);
         _chatToolView.delegate = self;
+        
     }
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if (object == _messageModel) {
+        if ([keyPath isEqualToString:KVO_MESSAGES_PATH]) {
+            [_tableView reloadData];
+            return;
+        }
+    }
+    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification
@@ -151,4 +176,37 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     DismissViewController(self, NO, nil);
 }
 
+#pragma mark -
+#pragma mark - UITableViewDataSource
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 160;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [_messageModel.messagesArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * const chatCellID = @"CWMainViewController.tableview.cell";
+    UITableViewCell *chatCell = [tableView dequeueReusableCellWithIdentifier:chatCellID];
+    if (!chatCell) {
+        chatCell = [[[CWChatCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:chatCellID
+                                          messageInfo:[_messageModel.messagesArray objectAtIndex:indexPath.row]] autorelease];
+    }
+    
+    return chatCell;
+}
+
+- (void)dealloc {
+    [_messageModel removeObserver:self forKeyPath:KVO_MESSAGES_PATH];
+    [_messageModel release];
+    [_tableView release];
+    [_chatToolView release];
+    [super dealloc];
+}
 @end

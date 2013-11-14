@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IMChatDemo/CWMainViewController.m"
-            timestampString = "405501588.468332"
+            timestampString = "406021357.963419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-keyboardWillShow:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IMChatDemo/CWMainViewController.m"
-            timestampString = "405501589.90829"
+            timestampString = "406021357.963419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "-keyboardWillChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -73,29 +73,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IMChatDemo/CWChatToolView.m"
-            timestampString = "405585543.044673"
+            filePath = "IMChatDemo/CWSQLUtility.m"
+            timestampString = "406000972.383324"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "-updateSelectorViewToMoreUI"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "-insertMessage:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IMChatDemo/CWChatToolView.m"
-            timestampString = "405585543.044673"
+            filePath = "IMChatDemo/NSDate+Help.m"
+            timestampString = "406022820.994325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "-updateSelectorViewToMoreUI"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-toStringHasTime:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
