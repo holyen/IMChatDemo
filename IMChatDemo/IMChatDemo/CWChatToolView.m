@@ -104,6 +104,8 @@
 - (void)dealloc
 {
     [_recordUtility release];
+    [_messageModel release];
+    
     [_pressSpeakButton release];
     [_messageSendTextField release];
     [_textModeButton release];
@@ -215,6 +217,7 @@
 
 - (void)saveToDBWithMessageContent:(NSString *)aContent
 {
+    /**
     NSError *error;
     NSString *regulaStr = @"\\bhttps?://[a-zA-Z0-9\\-.]+(?::(\\d+))?(?:(?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regulaStr
@@ -238,6 +241,14 @@
         NSRange rang = [[httpRanges objectAtIndex:i] rangeValue];
         aContent = [aContent stringByReplacingCharactersInRange:rang withString:strHandle];
     }
+     */
+    if (!_messageModel) {
+        _messageModel = [[CWMessageModel alloc] init];
+    }
+    CWMessageInfo *messageInfo = [[CWMessageInfo alloc] initWithImMessageId:@"test1" type:2 contentType:1 content:aContent fromUserInfoId:1000 toUserInfoId:1001 time:[NSDate date] state:0 sendState:0];
+    [_messageModel saveMessage:messageInfo];
+    [_messageModel.messagesArray addObject:messageInfo];
+    
     NSLog(@"message's content %@", aContent);
 }
 

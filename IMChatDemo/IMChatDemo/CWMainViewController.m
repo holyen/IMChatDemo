@@ -192,11 +192,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString * const chatCellID = @"CWMainViewController.tableview.cell";
-    UITableViewCell *chatCell = [tableView dequeueReusableCellWithIdentifier:chatCellID];
+    CWChatCell *chatCell = [tableView dequeueReusableCellWithIdentifier:chatCellID];
     if (!chatCell) {
         chatCell = [[[CWChatCell alloc] initWithStyle:UITableViewCellStyleDefault
                                       reuseIdentifier:chatCellID
                                           messageInfo:[_messageModel.messagesArray objectAtIndex:indexPath.row]] autorelease];
+    } else {
+        chatCell.messageInfo = [_messageModel.messagesArray objectAtIndex:indexPath.row];
     }
     
     return chatCell;

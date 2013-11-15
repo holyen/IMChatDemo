@@ -10,6 +10,7 @@
 #import "CWEmotionSelectorView.h"
 #import "CWMoreSelectorView.h"
 #import "CWRecordUtility.h"
+#import "CWMessageModel.h"
 
 //#import "CXAHyperlinkLabel.h"
 //#import "NSString+CXAHyperlinkParser.h"
@@ -26,6 +27,7 @@
 @interface CWChatToolView : UIView <CWEmotionSelectorViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate>
 {
     CWRecordUtility *_recordUtility;
+    CWMessageModel *_messageModel;
 }
 
 @property (assign, nonatomic) id<CWChatToolViewDelegate> delegate;

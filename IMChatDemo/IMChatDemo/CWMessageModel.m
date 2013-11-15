@@ -20,6 +20,11 @@
     self.messagesArray = messagesArray;
 }
 
+- (BOOL)saveMessage:(CWMessageInfo *)aMessageInfo
+{
+    return [self.sqlUtility insertMessage:aMessageInfo];
+}
+
 - (void)dealloc
 {
     [_messagesArray release];

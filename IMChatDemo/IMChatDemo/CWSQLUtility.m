@@ -9,7 +9,7 @@
 #import "CWSQLUtility.h"
 #import "CWUtility.h"
 
-#define ONCE_MESSAGE_COUNT      10
+#define ONCE_MESSAGE_COUNT      20
 
 #define DBPATH @"contacts.db"
 
@@ -131,7 +131,5 @@
     [_dataBase close];
     return userInfosArray;
 }
-
-
 
 @end

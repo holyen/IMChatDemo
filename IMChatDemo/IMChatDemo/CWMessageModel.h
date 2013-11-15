@@ -12,10 +12,12 @@
 
 @interface CWMessageModel : CWBaseModel
 
-@property (retain, nonatomic) NSArray *messagesArray;
+@property (retain, nonatomic) NSMutableArray *messagesArray;
 
 - (void)messagesFromUserInfoId:(long)aFromUserInfoId
                   toUserInfoId:(long)aToUserInfoId
                      pageIndex:(NSInteger)pageIndex;
+
+- (BOOL)saveMessage:(CWMessageInfo *)aMessageInfo;
 
 @end
