@@ -8,6 +8,8 @@
 
 #import "CWChatCell.h"
 #import "NSDate+Help.h"
+#import "UILabel+VerticalAlign.h"
+#import "CWRecordUtility.h"
 
 @implementation CWChatCell
 
@@ -42,8 +44,13 @@
         _contentLabel.font = _contentFont;
         _contentLabel.textColor = [UIColor blackColor];
         _contentLabel.backgroundColor = [UIColor grayColor];
-        _contentLabel.textAlignment = NSTextAlignmentRight;
+        _contentLabel.textAlignment = NSTextAlignmentLeft;
+        _contentLabel.numberOfLines = 100;
         [_contentView addSubview:_contentLabel];
+        
+        _photoContentImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        [_contentView addSubview:_photoContentImageView];
+        
         
         _avatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sharemore_friendcard.png"]];
         [self.contentView addSubview:_avatorImageView];
@@ -91,18 +98,26 @@
                                               constrainedToSize:CGSizeMake(190, 100000)
                                                   lineBreakMode:NSLineBreakByWordWrapping]; // !!! FIX ME
                 _contentLabel.hidden = NO;
-                
+                _photoContentImageView.image = nil;
             }
                 break;
             case 2:
             {
                 //PHOTO
-                
+                contentSize = CGSizeMake(85 + 10 + 10, 110 + 12 + 12);// 左右 10, 上下 12;
+                _photoContentImageView.frame = CGRectMake(10, 12, 85, 110);
+                NSFileManager *fileManager = [NSFileManager defaultManager];
+                UIImage *image = [UIImage imageWithData:[fileManager contentsAtPath: _messageInfo.content]];
+                _photoContentImageView.image = image;
             }
                 break;
             case 3:
             {
                 //VOICE
+                NSTimeInterval time = [CWRecordUtility durationFromPath:_messageInfo.content];
+                CGFloat width = (time / 60 ) * 190;
+                contentSize = CGSizeMake(width, 45);
+                _photoContentImageView.image = nil;
             }
                 break;
             default:
@@ -117,15 +132,16 @@
             
             _contentBGImageView.image = [CWUtility stretchableImage:[UIImage imageNamed:@"contant_im_chatto_bg_on.png"] edgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
             _contentLabel.frame = CGRectMake(320 - (10 + 40 + 10 + 10 + 10 + 10 + contentSize.width), 12, contentSize.width, contentSize.height);
-
+            _photoContentImageView.frame = CGRectMake(320 - (10 + 40 + 10 + 10 + 10 + 10 + contentSize.width), 12, contentSize.width, contentSize.height);
             _avatorImageView.frame = CGRectMake(320 - 10 - 40, 20, 40, 40);
         } else {
             
             _contentView.frame = CGRectMake(10 + 40 + 10, 20, 320 - (10 + 40 + 10), contentSize.height + 2 * 12);
             _contentBGImageView.frame = CGRectMake(0, 0, 10 + contentSize.width + 10 + 10, contentSize.height + 12 + 12);
             
-            _contentBGImageView.image = [CWUtility stretchableImage:[UIImage imageNamed:@"contant_im_chatfrom_bg_press.png"] edgeInsets:UIEdgeInsetsMake(20, 20, 20, 20)];
+            _contentBGImageView.image = [CWUtility stretchableImage:[UIImage imageNamed:@"contant_im_chatfrom_bg_press.png"] edgeInsets:UIEdgeInsetsMake(20, 40, 20, 20)];
             _contentLabel.frame = CGRectMake(10 + 10, 12, contentSize.width, contentSize.height);
+            _photoContentImageView.frame = CGRectMake(10 + 10, 12, contentSize.width, contentSize.height);
             _avatorImageView.frame = CGRectMake(10, 20, 40, 40);
         }
     }
@@ -141,6 +157,8 @@
     [_contentView release];
     [_contentBGImageView release];
     [_contentLabel release];
+    
+    [_photoContentImageView release];
     
     [_voiceTimeLabel release];
     

@@ -30,7 +30,10 @@
 + (NSString *)voiceDocumentDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    return [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Voice"];
+    return [paths objectAtIndex:0];
+    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    return [[paths objectAtIndex:0]stringByAppendingPathComponent:@"Voice"];
 }
 
 /**
@@ -41,7 +44,7 @@
 + (NSString *)voiceCacheDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    return [[paths objectAtIndex:0]stringByAppendingPathComponent:@"Voice"];
+    return [paths objectAtIndex:0];
 }
 
 /**
@@ -73,10 +76,15 @@
  */
 - (void)beginRecordByFileName:(NSString *)aFileName
 {
-    _wavNewPath = [[NSString alloc] initWithFormat:@"%@%@new.wav", [CWRecordUtility voiceDocumentDirectory], aFileName];
-    _amrPath = [[NSString alloc] initWithFormat:@"%@%@.amr", [CWRecordUtility voiceDocumentDirectory], aFileName];
-    NSString *path = [[NSString alloc] initWithFormat:@"%@%@.wav", [CWRecordUtility voiceDocumentDirectory], aFileName];
+    NSString *newPath = [NSString stringWithFormat:@"%@.wav",aFileName];
+    _wavNewPath = [[CWRecordUtility voiceDocumentDirectory] stringByAppendingPathComponent:newPath];
+
+    NSString *amrPath = [NSString stringWithFormat:@"%@.amr",aFileName];
+    _amrPath = [[CWRecordUtility voiceDocumentDirectory] stringByAppendingPathComponent:amrPath];
+    
+    NSString *path = [[CWRecordUtility voiceDocumentDirectory] stringByAppendingPathComponent:newPath];
     _path = path;
+    NSLog(@"voice 's path : %@",_path);
     self.recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL URLWithString:path]
                                                 settings:[CWRecordUtility audioRecorderSettingDict]
                                                    error:nil];
@@ -97,8 +105,12 @@
 
 - (void)playRecordByPath:(NSString *)aPath
 {
+    NSError *error;
     _player = [[AVAudioPlayer alloc] init];
-    _player = [_player initWithContentsOfURL:[NSURL URLWithString:aPath] error:nil];
+    _player = [_player initWithContentsOfURL:[NSURL URLWithString:aPath] error:&error];
+    if (error) {
+        NSLog(@"%@",error);
+    }
     [_player play];
 }
 
@@ -142,6 +154,18 @@
     } else {
         return -1;
     }
+}
+
++ (double)durationFromPath:(NSString *)aFilePath
+{
+    //aFilePath = @"/var/mobile/Applications/EC12D021-211E-4CDC-96EF-33E40266F45F/Documents/20131121163353.wav";
+    NSError *error;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:aFilePath] error:&error];
+    [player prepareToPlay];
+    if (error) {
+        NSLog(@"%@", error.description);
+    }
+    return player.duration;
 }
 
 /**

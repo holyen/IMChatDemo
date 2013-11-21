@@ -20,4 +20,6 @@
 
 + (UIImage *)stretchableImage:(UIImage *)img edgeInsets:(UIEdgeInsets)edgeInsets;
 
++ (BOOL)saveToFileWithImage:(UIImage *)aImage path:(NSString *)aPath;
+
 @end

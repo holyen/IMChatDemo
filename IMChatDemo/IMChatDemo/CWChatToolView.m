@@ -53,11 +53,27 @@
     if (longPress.state == UIGestureRecognizerStateBegan) {
         //录音开始.
         NSLog(@"开始录音");
-        [_recordUtility beginRecordByFileName:[CWRecordUtility currentTimeString]];
+        [_recordVoicePath release];
+        _recordVoicePath = [[CWRecordUtility currentTimeString] retain];
+        [_recordUtility beginRecordByFileName:_recordVoicePath];
     } else if (longPress.state == UIGestureRecognizerStateEnded) {
         //结束.
         [_recordUtility stopRecord];
         NSString *wavInfoStr = [NSString stringWithFormat:@"文件大小:%d", [_recordUtility sizeOfFileFromPath:_recordUtility.path] / 1024];
+        NSString *voiceName = [NSString stringWithFormat:@"%@.wav",_recordVoicePath];
+        CWMessageInfo *messageInfo = [[CWMessageInfo alloc] initWithImMessageId:@"123"
+                                                                           type:2
+                                                                    contentType:3
+                                                                        content: [[CWRecordUtility voiceDocumentDirectory] stringByAppendingPathComponent:voiceName]
+                                                                 fromUserInfoId:1000
+                                                                   toUserInfoId:1001
+                                                                           time:[NSDate date]
+                                                                          state:0
+                                                                      sendState:0];
+        
+        if ([_delegate respondsToSelector:@selector(message:didSendInChatToolView:)]) {
+            [_delegate performSelector:@selector(message:didSendInChatToolView:) withObject:messageInfo withObject:self];
+        }
         NSLog(@"音频 %@",wavInfoStr);
     }
 }
@@ -105,6 +121,7 @@
 {
     [_recordUtility release];
     [_messageModel release];
+    [_recordVoicePath release];
     
     [_pressSpeakButton release];
     [_messageSendTextField release];
@@ -242,12 +259,23 @@
         aContent = [aContent stringByReplacingCharactersInRange:rang withString:strHandle];
     }
      */
-    if (!_messageModel) {
-        _messageModel = [[CWMessageModel alloc] init];
+
+
+    CWMessageInfo *messageInfo = [[CWMessageInfo alloc] initWithImMessageId:@"test11"
+                                                                       type:2
+                                                                contentType:1
+                                                                    content:aContent
+                                                             fromUserInfoId:1000
+                                                               toUserInfoId:1001
+                                                                       time:[NSDate date]
+                                                                      state:0
+                                                                  sendState:0];
+    
+    if ([_delegate respondsToSelector:@selector(message:didSendInChatToolView:)]) {
+        [_delegate performSelector:@selector(message:didSendInChatToolView:) withObject:messageInfo withObject:self];
     }
-    CWMessageInfo *messageInfo = [[CWMessageInfo alloc] initWithImMessageId:@"test1" type:2 contentType:1 content:aContent fromUserInfoId:1000 toUserInfoId:1001 time:[NSDate date] state:0 sendState:0];
-    [_messageModel saveMessage:messageInfo];
-    [_messageModel.messagesArray addObject:messageInfo];
+    
+    //[_messageModel.messagesArray addObject:messageInfo];
     
     NSLog(@"message's content %@", aContent);
 }
@@ -264,6 +292,8 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self saveToDBWithMessageContent:textField.text];
+    textField.text = @"";
+    [textField resignFirstResponder];
     return YES;
 }
 

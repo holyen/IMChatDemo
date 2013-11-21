@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E17C7591839EB80003833E9 /* UILabel+VerticalAlign.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E17C7581839EB80003833E9 /* UILabel+VerticalAlign.m */; };
+		9E734A57183DFABE00C30E69 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EB32F1A183DF20B002D60E0 /* CoreMedia.framework */; };
 		9E777ED018273A1E00A7CB66 /* CWMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E777ECE18273A1E00A7CB66 /* CWMainViewController.m */; };
 		9E777ED118273A1E00A7CB66 /* CWMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E777ECF18273A1E00A7CB66 /* CWMainViewController.xib */; };
 		9E777ED418276C9400A7CB66 /* CWChatToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E777ED318276C9400A7CB66 /* CWChatToolView.m */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E17C7571839EB80003833E9 /* UILabel+VerticalAlign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+VerticalAlign.h"; sourceTree = "<group>"; };
+		9E17C7581839EB80003833E9 /* UILabel+VerticalAlign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+VerticalAlign.m"; sourceTree = "<group>"; };
 		9E777ECD18273A1E00A7CB66 /* CWMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWMainViewController.h; sourceTree = "<group>"; };
 		9E777ECE18273A1E00A7CB66 /* CWMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMainViewController.m; sourceTree = "<group>"; };
 		9E777ECF18273A1E00A7CB66 /* CWMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CWMainViewController.xib; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 		9E9A964A1828CCFE00E587D5 /* CWEmotionSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWEmotionSelectorView.m; sourceTree = "<group>"; };
 		9EA037D6182A0B6500C6F8DF /* CWMoreSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWMoreSelectorView.h; sourceTree = "<group>"; };
 		9EA037D7182A0B6500C6F8DF /* CWMoreSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWMoreSelectorView.m; sourceTree = "<group>"; };
+		9EB32F1A183DF20B002D60E0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		9EB878BA1830A84100EF58BC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		9EB878BE1830A99000EF58BC /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		9EB878BF1830A99000EF58BC /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
@@ -139,8 +144,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EB878BB1830A84100EF58BC /* libsqlite3.dylib in Frameworks */,
+				9E734A57183DFABE00C30E69 /* CoreMedia.framework in Frameworks */,
 				9ED423E8182C8B94000087A1 /* AVFoundation.framework in Frameworks */,
+				9EB878BB1830A84100EF58BC /* libsqlite3.dylib in Frameworks */,
 				9ED423E6182C8B8B000087A1 /* AudioToolbox.framework in Frameworks */,
 				9ED423E4182C8B81000087A1 /* CoreAudio.framework in Frameworks */,
 				9ED423CC182B5F1B000087A1 /* libxml2.2.dylib in Frameworks */,
@@ -249,6 +255,7 @@
 		9EDFF67F1820F1620014F421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9EB32F1A183DF20B002D60E0 /* CoreMedia.framework */,
 				9EB878BA1830A84100EF58BC /* libsqlite3.dylib */,
 				9ED423E7182C8B94000087A1 /* AVFoundation.framework */,
 				9ED423E5182C8B8B000087A1 /* AudioToolbox.framework */,
@@ -305,6 +312,8 @@
 				9ECCCBD2183360BA0002179A /* CWMessageModel.m */,
 				9ECCCBD41833695A0002179A /* NSDate+Help.h */,
 				9ECCCBD51833695A0002179A /* NSDate+Help.m */,
+				9E17C7571839EB80003833E9 /* UILabel+VerticalAlign.h */,
+				9E17C7581839EB80003833E9 /* UILabel+VerticalAlign.m */,
 			);
 			path = IMChatDemo;
 			sourceTree = "<group>";
@@ -440,6 +449,7 @@
 				9E777EEC18279FA100A7CB66 /* CWUtility.m in Sources */,
 				9EB878C41830A99000EF58BC /* FMDatabase.m in Sources */,
 				9E9A964818289AB000E587D5 /* CWEmotionButton.m in Sources */,
+				9E17C7591839EB80003833E9 /* UILabel+VerticalAlign.m in Sources */,
 				9ED423DC182C7E57000087A1 /* amrFileCodec.mm in Sources */,
 				9EB878C51830A99000EF58BC /* FMDatabaseAdditions.m in Sources */,
 				9ECCCBD01833609B0002179A /* CWBaseModel.m in Sources */,

@@ -25,7 +25,7 @@
 
 #define DELETE_MESSAGE                                  @"DELETE FROM Messages WHERE imMessageId = ? AND toUserInfoId = ? AND fromUserInfoId = ?"
 
-#define SELECT_MESSAGES                                 @"SELECT * FROM Messages WHERE (fromUserInfoId=? and toUserInfoId=?) or (fromUserInfoId=? and toUserInfoId=?)  order by time desc limit ? offset ?"
+#define SELECT_MESSAGES                                 @"SELECT * FROM Messages WHERE (fromUserInfoId=? and toUserInfoId=?) or (fromUserInfoId=? and toUserInfoId=?)  order by time limit ? offset ?"
 
 
 @implementation CWSQLUtility

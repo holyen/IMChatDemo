@@ -22,12 +22,15 @@
 - (void)speakButtonDidTapInChatToolView:(CWChatToolView *)aChatToolView;
 - (void)moreSelectorViewTapInChatToolView:(CWChatToolView *)aChatToolView type:(NSNumber *)aType;
 - (void)addOthersButtonDidTapInChatToolView:(CWChatToolView *)aChatToolView;
+- (void)message:(CWMessageInfo *)aMessageInfo didSendInChatToolView:(CWChatToolView *)aChatToolView;
+
 @end
 
 @interface CWChatToolView : UIView <CWEmotionSelectorViewDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate>
 {
     CWRecordUtility *_recordUtility;
     CWMessageModel *_messageModel;
+    NSString *_recordVoicePath;
 }
 
 @property (assign, nonatomic) id<CWChatToolViewDelegate> delegate;

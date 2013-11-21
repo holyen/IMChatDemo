@@ -22,6 +22,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
+        _recordUtility = [[CWRecordUtility alloc] init];
         _messageModel = [[CWMessageModel alloc] init];
         [_messageModel addObserver:self
                         forKeyPath:KVO_MESSAGES_PATH
@@ -174,6 +176,32 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
     //关闭模态视图控制器
     DismissViewController(self, NO, nil);
+    [CWUtility saveToFileWithImage:image path:nil];
+    CWMessageInfo *messageInfo = [[[CWMessageInfo alloc] initWithImMessageId:@"222" type:1 contentType:2 content:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"] fromUserInfoId:1001 toUserInfoId:1000 time:[NSDate date] state:1 sendState:1] autorelease];
+    [self sendMessage:messageInfo];
+}
+
+- (void)message:(CWMessageInfo *)aMessageInfo didSendInChatToolView:(CWChatToolView *)aChatToolView
+{
+    [self sendMessage:aMessageInfo];
+}
+
+- (void)sendMessage:(CWMessageInfo *)aMessageInfo
+{
+    [_messageModel saveMessage:aMessageInfo];
+    [_messageModel.messagesArray addObject:aMessageInfo];//!!!fix me
+    [_tableView reloadData];
+}
+
+#pragma mark -
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CWMessageInfo *messageInfo = [_messageModel.messagesArray objectAtIndex:indexPath.row];
+    if (messageInfo.contentType == 3) {
+        [_recordUtility playRecordByPath:messageInfo.content];
+    }
 }
 
 #pragma mark -
@@ -181,7 +209,37 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 160;
+    CWMessageInfo *messageInfo = [_messageModel.messagesArray objectAtIndex:indexPath.row];
+    
+    
+    CGSize contentSize = CGSizeZero;
+    switch (messageInfo.contentType) {
+        case 1:
+        {
+            //TEXT + EMOTION
+            contentSize = [messageInfo.content sizeWithFont:[UIFont systemFontOfSize:16]
+                                          constrainedToSize:CGSizeMake(190, 100000)
+                                              lineBreakMode:NSLineBreakByWordWrapping]; // !!! FIX ME
+        }
+            break;
+        case 2:
+        {
+            //PHOTO
+            contentSize = CGSizeMake(85 + 10 + 10, 110 + 12 + 12);
+        }
+            break;
+        case 3:
+        {
+            //VOICE
+
+            contentSize = CGSizeMake(0, 45);
+        }
+            break;
+        default:
+            break;
+    }
+
+    return (contentSize.height + 2 * 12 + 20 + 10);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -204,11 +262,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     return chatCell;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [_messageModel removeObserver:self forKeyPath:KVO_MESSAGES_PATH];
     [_messageModel release];
+    [_recordUtility release];
+    
     [_tableView release];
     [_chatToolView release];
     [super dealloc];
 }
+
+
+
 @end

@@ -59,4 +59,6 @@
 
 + (BOOL)wavToAmr:(NSString*)aWavPath savePath:(NSString*)aSavePath;
 
++ (double)durationFromPath:(NSString *)aFilePath;
+
 @end

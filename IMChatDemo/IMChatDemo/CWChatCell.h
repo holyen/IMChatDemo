@@ -20,6 +20,8 @@
     UIImageView *_contentBGImageView;
     UILabel *_contentLabel;
     
+    UIImageView *_photoContentImageView;
+    
     UILabel *_voiceTimeLabel;
     
     UIImageView *_avatorImageView;

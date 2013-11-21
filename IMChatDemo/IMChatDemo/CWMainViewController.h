@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CWChatToolView.h"
 #import "CWMessageModel.h"
+#import "CWRecordUtility.h"
 
 //!!!FIX ME
 # define PresentViewController(vc1, vc2, animate, complete) [vc1 presentViewController:vc2 animated:animate completion:complete]
@@ -17,6 +18,7 @@
 @interface CWMainViewController : UIViewController <CWChatToolViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 {
     CWMessageModel *_messageModel;
+    CWRecordUtility *_recordUtility;
 }
 
 @property (retain, nonatomic) CWChatToolView *chatToolView;

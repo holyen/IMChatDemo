@@ -32,4 +32,38 @@
 #endif
 }
 
++ (BOOL)saveToFileWithImage:(UIImage *)aImage path:(NSString *)aPath
+{
+    // Create paths to output images
+    NSString  *pngPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"];
+    //[[CWUtility documentPath:@"photos"] stringByAppendingPathComponent:@"/Test.png"];
+    
+    // Write a UIImage to JPEG with minimum compression (best quality)
+    // The value 'image' must be a UIImage object
+    // The value '1.0' represents image compression quality as value from 0.0 to 1.0
+    //[UIImageJPEGRepresentation(image, 1.0) writeToFile:jpgPath atomically:YES];
+    
+    // Write image to PNG
+    [UIImagePNGRepresentation(aImage) writeToFile:pngPath atomically:YES];
+    
+    // Let's check to see if files were successfully written...
+    
+    // Create file manager
+    NSError *error;
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    
+    // Point to Document directory
+    NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    
+    // Write out the contents of home directory to console
+    NSLog(@"Documents directory: %@", [fileMgr contentsOfDirectoryAtPath:documentsDirectory error:&error]);
+    
+    if (!error) {
+        return YES;
+    } else {
+        //NSAssert(0, @"save image to file error");
+        return NO;
+    }
+}
+
 @end
