@@ -18,6 +18,10 @@
     self.viewController = [[CWMainViewController alloc] initWithNibName:nil bundle:nil];
     self.window.rootViewController = _viewController;
     [self.window makeKeyAndVisible];
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+    
     return YES;
 }
 

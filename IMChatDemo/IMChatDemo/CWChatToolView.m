@@ -61,12 +61,12 @@
         [_recordUtility stopRecord];
         NSString *wavInfoStr = [NSString stringWithFormat:@"文件大小:%d", [_recordUtility sizeOfFileFromPath:_recordUtility.path] / 1024];
         NSString *voiceName = [NSString stringWithFormat:@"%@.wav",_recordVoicePath];
-        CWMessageInfo *messageInfo = [[CWMessageInfo alloc] initWithImMessageId:@"123"
+        CWMessageInfo *messageInfo = [[CWMessageInfo alloc] initWithImMessageId:@"123test1"
                                                                            type:2
-                                                                    contentType:3
+                                                                    contentType:4
                                                                         content: [[CWRecordUtility voiceDocumentDirectory] stringByAppendingPathComponent:voiceName]
-                                                                 fromUserInfoId:1000
-                                                                   toUserInfoId:1001
+                                                                 fromUserInfoId:1001
+                                                                   toUserInfoId:1000
                                                                            time:[NSDate date]
                                                                           state:0
                                                                       sendState:0];

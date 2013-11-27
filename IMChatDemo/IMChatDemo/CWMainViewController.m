@@ -8,6 +8,7 @@
 
 #import "CWMainViewController.h"
 #import "CWChatCell.h"
+#import "CWNewsCell.h"
 //!!! TEST
 #import "CWSQLUtility.h"
 #import "CWMessageInfo.h"
@@ -235,6 +236,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             contentSize = CGSizeMake(0, 45);
         }
             break;
+            case 4:
+        {
+            //news
+            contentSize = CGSizeMake(217, 110);
+        }
         default:
             break;
     }
@@ -249,17 +255,30 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * const chatCellID = @"CWMainViewController.tableview.cell";
-    CWChatCell *chatCell = [tableView dequeueReusableCellWithIdentifier:chatCellID];
-    if (!chatCell) {
-        chatCell = [[[CWChatCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:chatCellID
-                                          messageInfo:[_messageModel.messagesArray objectAtIndex:indexPath.row]] autorelease];
+    CWMessageInfo *messageInfo = [_messageModel.messagesArray objectAtIndex:indexPath.row];
+    if (messageInfo.contentType != 4) {
+        static NSString * const chatCellID = @"CWMainViewController.tableview.chatCell";
+        CWChatCell *chatCell = [tableView dequeueReusableCellWithIdentifier:chatCellID];
+        if (!chatCell) {
+            chatCell = [[[CWChatCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:chatCellID
+                                              messageInfo:messageInfo] autorelease];
+        } else {
+            chatCell.messageInfo = messageInfo;
+        }
+        
+        return chatCell;
     } else {
-        chatCell.messageInfo = [_messageModel.messagesArray objectAtIndex:indexPath.row];
+        static NSString * const newsCellID = @"CWMainViewController.tableview.newsCellID";
+        CWNewsCell *newsCell = [tableView dequeueReusableCellWithIdentifier:newsCellID];
+        if (!newsCell) {
+            newsCell = [[[CWNewsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:newsCellID messageInfo:messageInfo] autorelease];
+        } else {
+            //!!! NOT IMEMPLEMENT
+        }
+        return newsCell;
     }
-    
-    return chatCell;
+
 }
 
 - (void)dealloc
@@ -272,7 +291,5 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [_chatToolView release];
     [super dealloc];
 }
-
-
 
 @end

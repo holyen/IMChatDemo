@@ -91,8 +91,7 @@
     self.recorder.delegate = self;
     self.recorder.meteringEnabled = YES;
     [self.recorder prepareToRecord];
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-    [[AVAudioSession sharedInstance] setActive:YES error:nil];
+
     [self.recorder record];
 }
 
@@ -105,6 +104,9 @@
 
 - (void)playRecordByPath:(NSString *)aPath
 {
+    UInt32 doChangeDefaultRoute = 1;
+    AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,sizeof(doChangeDefaultRoute),&doChangeDefaultRoute);
+    
     NSError *error;
     _player = [[AVAudioPlayer alloc] init];
     _player = [_player initWithContentsOfURL:[NSURL URLWithString:aPath] error:&error];

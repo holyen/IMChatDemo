@@ -16,6 +16,7 @@
 		9E777EE9182779EE00A7CB66 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E777EE8182779EE00A7CB66 /* Images.xcassets */; };
 		9E777EEC18279FA100A7CB66 /* CWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E777EEB18279FA100A7CB66 /* CWUtility.m */; };
 		9E777EEF1827A34600A7CB66 /* CWEmotionListScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E777EEE1827A34600A7CB66 /* CWEmotionListScrollView.m */; };
+		9E8F204418458D68002EA25F /* CWNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E8F204318458D68002EA25F /* CWNewsCell.m */; };
 		9E9A964818289AB000E587D5 /* CWEmotionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9A964718289AB000E587D5 /* CWEmotionButton.m */; };
 		9E9A964B1828CCFE00E587D5 /* CWEmotionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9A964A1828CCFE00E587D5 /* CWEmotionSelectorView.m */; };
 		9EA037D8182A0B6500C6F8DF /* CWMoreSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EA037D7182A0B6500C6F8DF /* CWMoreSelectorView.m */; };
@@ -77,6 +78,8 @@
 		9E777EEB18279FA100A7CB66 /* CWUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWUtility.m; sourceTree = "<group>"; };
 		9E777EED1827A34600A7CB66 /* CWEmotionListScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWEmotionListScrollView.h; sourceTree = "<group>"; };
 		9E777EEE1827A34600A7CB66 /* CWEmotionListScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWEmotionListScrollView.m; sourceTree = "<group>"; };
+		9E8F204218458D68002EA25F /* CWNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWNewsCell.h; sourceTree = "<group>"; };
+		9E8F204318458D68002EA25F /* CWNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWNewsCell.m; sourceTree = "<group>"; };
 		9E9A964618289AB000E587D5 /* CWEmotionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWEmotionButton.h; sourceTree = "<group>"; };
 		9E9A964718289AB000E587D5 /* CWEmotionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWEmotionButton.m; sourceTree = "<group>"; };
 		9E9A96491828CCFE00E587D5 /* CWEmotionSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWEmotionSelectorView.h; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				9ECCCBD51833695A0002179A /* NSDate+Help.m */,
 				9E17C7571839EB80003833E9 /* UILabel+VerticalAlign.h */,
 				9E17C7581839EB80003833E9 /* UILabel+VerticalAlign.m */,
+				9E8F204218458D68002EA25F /* CWNewsCell.h */,
+				9E8F204318458D68002EA25F /* CWNewsCell.m */,
 			);
 			path = IMChatDemo;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 				9E9A964818289AB000E587D5 /* CWEmotionButton.m in Sources */,
 				9E17C7591839EB80003833E9 /* UILabel+VerticalAlign.m in Sources */,
 				9ED423DC182C7E57000087A1 /* amrFileCodec.mm in Sources */,
+				9E8F204418458D68002EA25F /* CWNewsCell.m in Sources */,
 				9EB878C51830A99000EF58BC /* FMDatabaseAdditions.m in Sources */,
 				9ECCCBD01833609B0002179A /* CWBaseModel.m in Sources */,
 				9E9A964B1828CCFE00E587D5 /* CWEmotionSelectorView.m in Sources */,
