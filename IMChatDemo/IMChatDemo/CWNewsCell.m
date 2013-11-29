@@ -19,7 +19,6 @@
     if (self) {
 //        217,128
         _contentView = [[UIView alloc] initWithFrame:CGRectZero];
-        _contentView.backgroundColor = [UIColor yellowColor];
         [self.contentView addSubview:_contentView];
         
         _bgImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -55,7 +54,7 @@
         _messageInfo = [messageInfo retain];
         
         if ([self isSelfMessageWithMessageInfo:_messageInfo]) {
-            //自己
+            
             _contentView.frame = CGRectMake(0, 0, 320 - (10 + 40 + 10), 128 + 12 + 12);
             _bgImageView.frame = CGRectMake(40, 20, 217, 128);
             _bgImageView.image = [CWUtility stretchableImage:[UIImage imageNamed:@"contant_im_chatto_bg_on.png"] edgeInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
@@ -65,12 +64,11 @@
             _avatorImageView.frame = CGRectMake(320 - 10 - 40, 20, 40, 40);
 
         } else {
-            
             _contentView.frame = CGRectMake(10 + 40 + 10, 0, 10 + 217 + 10 + 10, 128 + 12 + 12);
             _bgImageView.frame = CGRectMake(0, 20, 217, 128);
             _titleLabel.frame = CGRectMake(20, 25, 185, 35);
             _coverImageView.frame = CGRectMake(20, 72, 60, 60);
-            _contentLabel.frame = CGRectMake(10 + 60 + 10, 72, 120, 50);
+            _contentLabel.frame = CGRectMake(10 + 60 + 10 + 10, 72, 120, 50);
             _avatorImageView.frame = CGRectMake(10, 20, 40, 40);
 
             _bgImageView.image = [CWUtility stretchableImage:[UIImage imageNamed:@"contant_im_chatfrom_bg_press.png"] edgeInsets:UIEdgeInsetsMake(20, 40, 20, 20)];

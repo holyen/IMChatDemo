@@ -14,6 +14,8 @@
 
 - (void)emotionSelectedEmotionString:(NSString *)aEmotionString;
 
+- (void)emotionSendButtonTap;
+
 @end
 
 @interface CWEmotionSelectorView : UIView <UIScrollViewDelegate>

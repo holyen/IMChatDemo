@@ -34,7 +34,6 @@
         [_dateView addSubview:_dateLabel];
 
         _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 20, 320 - (10 + 40 + 10), 0)];
-        _contentView.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:_contentView];
         
         _contentBGImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -43,7 +42,6 @@
         _contentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _contentLabel.font = _contentFont;
         _contentLabel.textColor = [UIColor blackColor];
-        _contentLabel.backgroundColor = [UIColor grayColor];
         _contentLabel.textAlignment = NSTextAlignmentLeft;
         _contentLabel.numberOfLines = 100;
         [_contentView addSubview:_contentLabel];

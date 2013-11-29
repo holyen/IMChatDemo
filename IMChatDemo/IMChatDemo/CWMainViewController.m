@@ -120,12 +120,12 @@
     switch (type) {
         case MORE_SELECTOR_PHOTO:
         {
-            UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];//图像选取器
+            UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
             imagePicker.delegate = self;
-            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;//打开相册
-            imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;//过渡类型,有四种
-            imagePicker.allowsEditing = NO;//禁止对图片进行编辑
-            //打开模态视图控制器选择图像
+            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+            imagePicker.allowsEditing = NO;
+
             PresentViewController(self, imagePicker, YES, nil);
         }
             break;
@@ -135,7 +135,7 @@
             {
                 UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
                 imagePicker.delegate = self;
-                imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;//照片来源为相机
+                imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
                 imagePicker.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
                 PresentViewController(self, imagePicker, YES, nil);
             }
@@ -165,17 +165,19 @@
     [self updateChatToolViewFrameByNormalState:NO];
 }
 
-#pragma mark - 从相册选择照片后，回调
+#pragma mark -
+#pragma mark - UIImagePickerControllerDelegate
+
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];//获取图片
+    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
     {
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);//将拍到的图片保存到相册
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     }
-    //关闭模态视图控制器
+
     DismissViewController(self, NO, nil);
     [CWUtility saveToFileWithImage:image path:nil];
     CWMessageInfo *messageInfo = [[[CWMessageInfo alloc] initWithImMessageId:@"222" type:1 contentType:2 content:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Test.png"] fromUserInfoId:1001 toUserInfoId:1000 time:[NSDate date] state:1 sendState:1] autorelease];

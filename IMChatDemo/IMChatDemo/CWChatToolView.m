@@ -63,10 +63,10 @@
         NSString *voiceName = [NSString stringWithFormat:@"%@.wav",_recordVoicePath];
         CWMessageInfo *messageInfo = [[CWMessageInfo alloc] initWithImMessageId:@"123test1"
                                                                            type:2
-                                                                    contentType:4
+                                                                    contentType:3
                                                                         content: [[CWRecordUtility voiceDocumentDirectory] stringByAppendingPathComponent:voiceName]
-                                                                 fromUserInfoId:1001
-                                                                   toUserInfoId:1000
+                                                                 fromUserInfoId:1000
+                                                                   toUserInfoId:1001
                                                                            time:[NSDate date]
                                                                           state:0
                                                                       sendState:0];
@@ -275,8 +275,6 @@
         [_delegate performSelector:@selector(message:didSendInChatToolView:) withObject:messageInfo withObject:self];
     }
     
-    //[_messageModel.messagesArray addObject:messageInfo];
-    
     NSLog(@"message's content %@", aContent);
 }
 
@@ -285,6 +283,16 @@
 - (void)emotionSelectedEmotionString:(NSString *)aEmotionString
 {
     _messageSendTextField.text = [_messageSendTextField.text stringByAppendingString:aEmotionString];
+}
+
+- (void)emotionSendButtonTap
+{
+    [self saveToDBWithMessageContent:_messageSendTextField.text];
+    _messageSendTextField.text = @"";
+    [_messageSendTextField resignFirstResponder];
+    if ([_delegate respondsToSelector:@selector(speakButtonDidTapInChatToolView:)]) {
+        [_delegate performSelector:@selector(speakButtonDidTapInChatToolView:) withObject:self];
+    }
 }
 
 #pragma mark -

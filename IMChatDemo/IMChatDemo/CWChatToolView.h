@@ -38,7 +38,7 @@
 @property (retain, nonatomic) IBOutlet UITextField *messageSendTextField;
 @property (retain, nonatomic) IBOutlet UIButton *textModeButton;
 @property (retain, nonatomic) IBOutlet UIButton *voiceModeButton;
-@property (retain, nonatomic) IBOutlet UIButton *emotionSelectButton;//打开表情按钮
+@property (retain, nonatomic) IBOutlet UIButton *emotionSelectButton;
 @property (retain, nonatomic) CWEmotionSelectorView *emotionSelectorView;
 @property (retain, nonatomic) IBOutlet UIButton *emotionTextModeButton;//表情对应的键盘按钮
 @property (retain, nonatomic) CWMoreSelectorView *moreSelectorView;

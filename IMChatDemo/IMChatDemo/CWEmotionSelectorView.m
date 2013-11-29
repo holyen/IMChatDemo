@@ -37,8 +37,11 @@
         [_sendButton setBackgroundImage:[UIImage imageNamed:@"EmotionsSendBtnBlue.png"]
                                forState:UIControlStateSelected];
         [_sendButton setTitle:@"  发送" forState:UIControlStateNormal];
-                [_sendButton setTitle:@"  发送" forState:UIControlStateHighlighted];
-                [_sendButton setTitle:@"  发送" forState:UIControlStateSelected];
+        [_sendButton setTitle:@"  发送" forState:UIControlStateHighlighted];
+        [_sendButton setTitle:@"  发送" forState:UIControlStateSelected];
+        [_sendButton addTarget:self
+                        action:@selector(emotionSendButtonTap:)
+              forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_sendButton];
     }
     return self;
@@ -57,6 +60,13 @@
 {
     if ([_delegate respondsToSelector:@selector(emotionSelectedEmotionString:)]) {
         [_delegate performSelector:@selector(emotionSelectedEmotionString:) withObject:aButton.emotionString];
+    }
+}
+
+- (void)emotionSendButtonTap:(UIButton *)aButton
+{
+    if ([_delegate respondsToSelector:@selector(emotionSendButtonTap)]) {
+        [_delegate performSelector:@selector(emotionSendButtonTap)];
     }
 }
 

@@ -10,11 +10,6 @@
 
 @implementation CWRecordUtility
 
-/**
- *	生成当前时间字符串
- *
- *	@return	当前时间字符串
- */
 + (NSString *)currentTimeString
 {
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
@@ -22,11 +17,6 @@
     return [dateformat stringFromDate:[NSDate date]];
 }
 
-/**
- *	获取amr音频文件保存的路径
- *
- *	@return	amr音频文件保存的路径
- */
 + (NSString *)voiceDocumentDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -36,44 +26,22 @@
 //    return [[paths objectAtIndex:0]stringByAppendingPathComponent:@"Voice"];
 }
 
-/**
- *	获取音频文件缓存路径
- *
- *	@return	音频文件缓存路径
- */
 + (NSString *)voiceCacheDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
     return [paths objectAtIndex:0];
 }
 
-/**
- 判断文件是否存在
- @param _path 文件路径
- @returns 存在返回yes
- */
 + (BOOL)fileExistsAtPath:(NSString *)aPath
 {
     return [[NSFileManager defaultManager] fileExistsAtPath:aPath];
 }
 
-/**
- 删除文件
- @param _path 文件路径
- @returns 成功返回yes
- */
 + (BOOL)deleteFileAtPath:(NSString *)aPath
 {
     return [[NSFileManager defaultManager] removeItemAtPath:aPath error:nil];
 }
 
-/**
- *	开始录音
- *
- *	@param 	aFileName  录音音频文件名
- *
- *	@return	void
- */
 - (void)beginRecordByFileName:(NSString *)aFileName
 {
     NSString *newPath = [NSString stringWithFormat:@"%@.wav",aFileName];
@@ -95,7 +63,6 @@
     [self.recorder record];
 }
 
-//停止录音
 - (void)stopRecord
 {
     if (self.recorder.isRecording)
@@ -134,13 +101,6 @@
     return recordSetting;
 }
 
-/**
- *	根据文件路径获取文件大小
- *
- *	@param 	aFilePath 	文件路径
- *
- *	@return	文件大小
- */
 - (NSInteger)sizeOfFileFromPath:(NSString *)aFilePath
 {
     NSFileManager *fileManager = [[NSFileManager alloc] init];
@@ -170,13 +130,6 @@
     return player.duration;
 }
 
-/**
- *	amr格式转换成wav
- *
- *	@param 	aSavePath 	转成wav后保存的路径
- *
- *	@return	是否转换成功
- */
 + (BOOL)amrToWav:(NSString*)aAmrPath savePath:(NSString*)aSavePath
 {
     if (DecodeAMRFileToWAVEFile([aAmrPath cStringUsingEncoding:NSASCIIStringEncoding], [aSavePath cStringUsingEncoding:NSASCIIStringEncoding]))
@@ -185,13 +138,6 @@
     return NO;
 }
 
-/**
- *	wav格式转换成amr
- *
- *	@param 	aSavePath 	转成amr后保存的路径
- *
- *	@return	是否转换成功
- */
 + (BOOL)wavToAmr:(NSString*)aWavPath savePath:(NSString*)aSavePath
 {
     if (EncodeWAVEFileToAMRFile([aWavPath cStringUsingEncoding:NSASCIIStringEncoding], [aSavePath cStringUsingEncoding:NSASCIIStringEncoding], 1, 16))
