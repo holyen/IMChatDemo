@@ -11,7 +11,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import "AudioToolbox/AudioToolbox.h"
 #import "amrFileCodec.h"
-#import "wav.h"
 #import "interf_dec.h"
 #import "dec_if.h"
 #import "interf_enc.h"
