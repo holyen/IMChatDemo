@@ -8,7 +8,6 @@
 
 #import "CWChatCell.h"
 #import "NSDate+Help.h"
-#import "UILabel+VerticalAlign.h"
 #import "CWRecordUtility.h"
 
 @implementation CWChatCell
