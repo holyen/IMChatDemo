@@ -8,6 +8,7 @@
 
 #import "CWLoginViewController.h"
 #import "CWAppDelegate.h"
+#import "NSData+Base64.h"
 
 @interface CWLoginViewController ()
 
@@ -20,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.dataArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -42,10 +44,25 @@
 }
 
 - (void)dealloc {
+    [_dataArray release];
+    [_xmppUserObject release];
     [_hostTextField release];
     [_userNameTextField release];
     [_passwordTextField release];
+    [_sendJIDTextField release];
+    [_sendContentTextField release];
     [super dealloc];
+}
+
+- (void)getData{
+    NSManagedObjectContext *context = [[[self appDelegate] xmppRosterStorage] mainThreadManagedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPUserCoreDataStorageObject" inManagedObjectContext:context];
+    NSFetchRequest *request = [[NSFetchRequest alloc]init];
+    [request setEntity:entity];
+    NSError *error ;
+    NSArray *friends = [context executeFetchRequest:request error:&error];
+    [self.dataArray removeAllObjects];
+    [self.dataArray addObjectsFromArray:friends];
 }
 
 - (IBAction)loginButtonTap:(id)sender {
@@ -55,6 +72,28 @@
     [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%@@%@/XMPPIOS",self.userNameTextField.text,self.hostTextField.text] forKey:kMyJID];
     [[NSUserDefaults standardUserDefaults]setObject:self.passwordTextField.text forKey:kPS];
     [[self appDelegate] myConnect];
+}
+
+- (IBAction)sendButtonTap:(id)sender {
+    XMPPUserCoreDataStorageObject *object = [self.dataArray objectAtIndex:0];
+    XMPPJID *jid = [XMPPJID jidWithString:@"zouhongyuan@192.168.0.24/XMPPIOS"];
+    XMPPMessage *message = [XMPPMessage messageWithType:@"chat" to:jid];
+    [message addBody:self.sendContentTextField.text];
+    [[[self appDelegate] xmppStream] sendElement:message];
+
+//    NSURL *url = [NSURL URLWithString:@"/var/mobile/Applications/EC12D021-211E-4CDC-96EF-33E40266F45F/Documents/20131206141153.wav"];
+//    NSData *soundData = [[[NSData alloc] initWithContentsOfURL:url] autorelease];
+//    NSString *sound = [soundData base64EncodedString];
+//    [message addBody:sound];
+//    [[[self appDelegate] xmppStream] sendElement:message];
+}
+
+- (IBAction)getFriendsButtonTap:(id)sender {
+    [self getData];
+}
+
+- (IBAction)addFriendButtonTap:(id)sender {
+    [[[self appDelegate] xmppRoster] addUser:[XMPPJID jidWithString:@"lizhengxing@192.168.0.24"] withNickname:@"lizhengxing"];
 }
 
 @end

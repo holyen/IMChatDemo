@@ -7,12 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XMPPFramework.h"
 
 @interface CWLoginViewController : UIViewController
+
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic,strong) XMPPUserCoreDataStorageObject *xmppUserObject;
 @property (retain, nonatomic) IBOutlet UITextField *hostTextField;
 @property (retain, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (retain, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (retain, nonatomic) IBOutlet UITextField *sendJIDTextField;
+@property (retain, nonatomic) IBOutlet UITextField *sendContentTextField;
 
 - (IBAction)loginButtonTap:(id)sender;
+- (IBAction)sendButtonTap:(id)sender;
+- (IBAction)getFriendsButtonTap:(id)sender;
+- (IBAction)addFriendButtonTap:(id)sender;
+
 
 @end
