@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSData+Base64.h"
 
 @interface CWUtility : NSObject
 
@@ -21,5 +22,9 @@
 + (UIImage *)stretchableImage:(UIImage *)img edgeInsets:(UIEdgeInsets)edgeInsets;
 
 + (BOOL)saveToFileWithImage:(UIImage *)aImage path:(NSString *)aPath;
+
++ (NSString *)image2String:(UIImage *)image;
+
++ (UIImage *)string2Image:(NSString *)string;
 
 @end

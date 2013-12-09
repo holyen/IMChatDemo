@@ -18,6 +18,7 @@
 @property (retain, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (retain, nonatomic) IBOutlet UITextField *sendJIDTextField;
 @property (retain, nonatomic) IBOutlet UITextField *sendContentTextField;
+@property (retain, nonatomic) IBOutlet UIImageView *sendToBeShowImageView;
 
 - (IBAction)loginButtonTap:(id)sender;
 - (IBAction)sendButtonTap:(id)sender;

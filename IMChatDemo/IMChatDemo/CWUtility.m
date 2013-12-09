@@ -66,4 +66,33 @@
     }
 }
 
+//+ (NSString *)file2StringByFilePath:(NSString *)aFilePath
+//{
+//    
+//}
+
+//+ (NSString *)string2FileByFilePath:(NSString *)string
+//{
+//    
+//}
+
++ (NSString *)image2String:(UIImage *)image
+{
+    float o = 0.5;
+	if (!image){
+		return @"";
+	}
+
+	NSData* pictureData = UIImageJPEGRepresentation(image, o);
+	NSString* pictureDataString = [pictureData base64Encoding];
+	
+	return pictureDataString;
+}
+
++ (UIImage *)string2Image:(NSString *)string
+{
+	UIImage *image = [UIImage imageWithData:[NSData dataWithBase64EncodedString:string]];
+	return image;
+}
+
 @end

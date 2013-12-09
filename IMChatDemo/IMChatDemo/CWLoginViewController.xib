@@ -10,6 +10,7 @@
                 <outlet property="passwordTextField" destination="VwV-7a-kxf" id="dDL-Bc-zux"/>
                 <outlet property="sendContentTextField" destination="ttc-PM-QOD" id="IZD-Bs-a7y"/>
                 <outlet property="sendJIDTextField" destination="wBI-2h-nzc" id="dA0-db-3p6"/>
+                <outlet property="sendToBeShowImageView" destination="b29-Ad-j68" id="sgF-lH-nAZ"/>
                 <outlet property="userNameTextField" destination="Ja2-b7-jgg" id="wML-3G-5fH"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -25,7 +26,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="zouhongyuan" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ja2-b7-jgg">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="liyuhui" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ja2-b7-jgg">
                     <rect key="frame" x="20" y="101" width="280" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -96,6 +97,10 @@
                         <action selector="addFriendButtonTap:" destination="-1" eventType="touchUpInside" id="y4G-qP-5Hz"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b29-Ad-j68">
+                    <rect key="frame" x="20" y="347" width="286" height="214"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

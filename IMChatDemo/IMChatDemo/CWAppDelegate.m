@@ -7,6 +7,7 @@
 //
 
 #import "CWAppDelegate.h"
+#import "CWUtility.h"
 
 @implementation CWAppDelegate
 
@@ -147,9 +148,15 @@ alternativeResourceForConflictingResource:(NSString *)conflictingResource
 
 - (void)xmppStream:(XMPPStream *)sender didReceiveMessage:(XMPPMessage *)message
 {
-    NSLog(@"didReceiveMessage : %@", message.description);
+    NSLog(@"didReceiveMessage : %@", message.body);
+    
+     UIImage *image = [CWUtility string2Image:message.body];
+    NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
+    [notiCenter postNotificationName:@"didReceiveMessage" object:image];
+    
     if ([self.chatDelegate respondsToSelector:@selector(getNewMessage:Message:)]) {
         [self.chatDelegate getNewMessage:self Message:message];
+
     }
 }
 
